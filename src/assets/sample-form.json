@@ -1,0 +1,47 @@
+[
+  {
+    "id": "firstName",
+    "type": "text"
+  },
+  {
+    "id": "lastName",
+    "type": "text"
+  },
+  {
+    "id": "type",
+    "type": "select",
+    "values": ["private", "business"]
+  },
+  {
+    "id": "privateAddress",
+    "visible": {
+      "id": "type",
+      "test": "private"
+    },
+    "type": "group",
+    "fields": [
+      {
+        "id": "street",
+        "type": "text"
+      }
+    ]
+  },
+  {
+    "id": "businessAddress",
+    "visible": {
+      "id": "type",
+      "test": "business"
+    },
+    "type": "group",
+    "fields": [
+      {
+        "id": "street",
+        "type": "text"
+      },
+      {
+        "id": "vatNumber",
+        "type": "text"
+      }
+    ]
+  }
+]

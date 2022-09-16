@@ -1,0 +1,27 @@
+<form *ngIf="group" [formGroup]="group">
+  {{group.value | json}}
+  <ng-container *ngFor="let definition of config">
+    <div *ngIf="definition.type === 'text' && definition.control">
+      <label [for]="definition.id">{{definition.id}}</label>
+      <input [id]="definition.id" type="text" [formControl]="definition.control!">
+    </div>
+
+    <div *ngIf="definition.type === 'select' && definition.control">
+      <ng-container *ngFor="let value of definition.values">
+        <label [for]="value">{{value}}</label>
+        <input [id]="value" type="radio" [value]="value" [name]="definition.id" [formControlName]="definition.id">
+      </ng-container>
+    </div>
+
+    <div *ngIf="definition.type === 'group' && definition.control">
+      <ng-container *ngFor="let field of definition.fields">
+        <div *ngIf="field.type === 'text' && field.control">
+          <label [for]="field.id">{{field.id}}</label>
+          <input [id]="field.id" type="text" [formControl]="field.control!">
+        </div>
+      </ng-container>
+    </div>
+
+  </ng-container>
+
+</form>
